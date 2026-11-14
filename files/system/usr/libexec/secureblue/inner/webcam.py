@@ -36,11 +36,13 @@ def main() -> int:
     match mode:
         case "on":
             os.remove(WEBCAM_MOD_FILE)
-            result = subprocess.run(["/usr/bin/modprobe", "-a", *WEBCAM_KMODS], check=False)
+            # hardware-specific kmods not loaded because there is no way to identify what is needed?
+            result = subprocess.run(["/usr/bin/modprobe", "uvcvideo"], check=False)
             if result.returncode != 0:
                 print("Failed to load Webcam modules:", result.stderr)
                 return 1
-            print("Webcam has been enabled.")
+            print("Webcam has been enabled. If your webcam does not work yet, please reboot " +
+                  "to load any additional hardware-specific modules.")
             return 0
         case "off":
             with open(WEBCAM_MOD_FILE, "w", encoding="utf8") as fd:
