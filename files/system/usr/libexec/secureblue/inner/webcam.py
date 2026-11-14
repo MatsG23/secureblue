@@ -41,8 +41,10 @@ def main() -> int:
             if result.returncode != 0:
                 print("Failed to load Webcam modules:", result.stderr)
                 return 1
-            print("Webcam has been enabled. If your webcam does not work yet, please reboot " +
-                  "to load any additional hardware-specific modules.")
+            print(
+                "Webcam has been enabled. If your webcam does not work yet, please reboot "
+                + "to load any additional hardware-specific modules."
+            )
             return 0
         case "off":
             with open(WEBCAM_MOD_FILE, "w", encoding="utf8") as fd:

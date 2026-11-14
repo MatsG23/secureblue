@@ -35,7 +35,8 @@ def main() -> int:
                             f"install {kmod} /sbin/modprobe --ignore-install {kmod}"
                             for kmod in BLUE_KMODS
                         ]
-                    ) + "\n"
+                    )
+                    + "\n"
                 )
             os.chmod(BLUE_MOD_FILE, 0o644)
             result = subprocess.run(["/usr/bin/modprobe", "-a", *BLUE_KMODS], check=False)
@@ -50,7 +51,9 @@ def main() -> int:
             os.remove(BLUE_MOD_FILE)
             bluetooth_service.disable_now()
             bluetooth_service.mask()
-            print("Bluetooth has been disabled. Please reboot for the kernel modules to be unloaded.")
+            print(
+                "Bluetooth has been disabled. Please reboot for the kernel modules to be unloaded."
+            )
             return 0
         case _:
             print("Invalid inner script argument.")
