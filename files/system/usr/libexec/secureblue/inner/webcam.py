@@ -46,7 +46,7 @@ def main() -> int:
             with open(WEBCAM_MOD_FILE, "w", encoding="utf8") as fd:
                 fd.write("\n".join([f"install {kmod} /bin/false" for kmod in WEBCAM_KMODS]) + "\n")
             os.chmod(WEBCAM_MOD_FILE, 0o644)
-            print("Webcam has been disabled. Reboot for effect.")
+            print("Webcam has been disabled. Please reboot for the kernel modules to be unloaded.")
             return 0
         case _:
             print("Invalid inner script argument.")

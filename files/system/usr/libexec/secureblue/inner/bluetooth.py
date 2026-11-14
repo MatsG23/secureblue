@@ -50,7 +50,7 @@ def main() -> int:
             os.remove(BLUE_MOD_FILE)
             bluetooth_service.disable_now()
             bluetooth_service.mask()
-            print("Bluetooth has been disabled. Reboot for effect.")
+            print("Bluetooth has been disabled. Please reboot for the kernel modules to be unloaded.")
             return 0
         case _:
             print("Invalid inner script argument.")
