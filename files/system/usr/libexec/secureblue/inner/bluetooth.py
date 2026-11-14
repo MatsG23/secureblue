@@ -38,7 +38,7 @@ def main() -> int:
                     ) + "\n"
                 )
             os.chmod(BLUE_MOD_FILE, 0o644)
-            result = subprocess.run(["/usr/bin/modprobe", *BLUE_KMODS], check=False)
+            result = subprocess.run(["/usr/bin/modprobe", "-a", *BLUE_KMODS], check=False)
             if result.returncode != 0:
                 print("Failed to load Bluetooth modules")
                 return 1

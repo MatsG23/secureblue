@@ -36,7 +36,7 @@ def main() -> int:
     match mode:
         case "on":
             os.remove(WEBCAM_MOD_FILE)
-            result = subprocess.run(["/usr/bin/modprobe", *WEBCAM_KMODS], check=False)
+            result = subprocess.run(["/usr/bin/modprobe", "-a", *WEBCAM_KMODS], check=False)
             if result.returncode != 0:
                 print("Failed to load Webcam modules:", result.stderr)
                 return 1
