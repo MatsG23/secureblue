@@ -46,11 +46,7 @@ def main() -> int:
             with open(WEBCAM_MOD_FILE, "w", encoding="utf8") as fd:
                 fd.write("\n".join([f"install {kmod} /bin/false" for kmod in WEBCAM_KMODS]) + "\n")
             os.chmod(WEBCAM_MOD_FILE, 0o644)
-            result = subprocess.run(["/usr/bin/modprobe", "-r", *WEBCAM_KMODS], check=False)
-            if result.returncode != 0:
-                print("Failed to unload Webcam modules")
-                return 1
-            print("Webcam has been disabled.")
+            print("Webcam has been disabled. Reboot for effect.")
             return 0
         case _:
             print("Invalid inner script argument.")

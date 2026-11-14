@@ -50,11 +50,7 @@ def main() -> int:
             os.remove(BLUE_MOD_FILE)
             bluetooth_service.disable_now()
             bluetooth_service.mask()
-            result = subprocess.run(["/usr/bin/modprobe", *BLUE_KMODS], check=False)
-            if result.returncode != 0:
-                print("Failed to unload Bluetooth modules:", result.stderr)
-                return 1
-            print("Bluetooth has been disabled.")
+            print("Bluetooth has been disabled. Reboot for effect.")
             return 0
         case _:
             print("Invalid inner script argument.")
